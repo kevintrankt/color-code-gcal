@@ -51,14 +51,16 @@ function ColorCodeEvents() {
         var allDayEvent = e.isAllDayEvent();
         var recurringEvent = e.isRecurringEvent();
 
-        // 1:1 meetings (internal)
-        if (numberOfGuests == 2) {
-            e.setColor(oneOnOneColor)
-        }
+
 
         // recurring meeting
         if (recurringEvent) {
             e.setColor(recurringMtgColor)
+        }
+
+        // 1:1 meetings (internal)
+        if (numberOfGuests == 2) {
+            e.setColor(oneOnOneColor)
         }
 
         // External meeting
