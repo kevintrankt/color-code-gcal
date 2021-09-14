@@ -4,8 +4,8 @@ Color-code your Google Calendar similar to [Clockwise's](https://www.getclockwis
 ![enter image description here](https://github.com/kevintrankt/color-code-gcal/blob/main/screenshot.png?raw=true)
 
 ## Color Coding (descending priority)
-- Custom color coding
-- Out-of-office
+- Custom color coding rules
+- Out-of-office events
 - Focus time
 - External Meetings
 - 1:1 Meeings
