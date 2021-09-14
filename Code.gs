@@ -1,9 +1,13 @@
 function ColorCodeEvents() {
 
-    /* MODIFY THE COLORS BELOW. COLORS CAN BE FOUND HERE https://developers.google.com/apps-script/reference/calendar/event-color */
+    /* ---------- MODIFY THE CODE BELOW ---------- 
+    */
 
     // Internal domain to determine if a mtg is external
     var internalDomain = 'salesforce';
+
+
+    /* COLORS CAN BE FOUND HERE https://developers.google.com/apps-script/reference/calendar/event-color  */
 
     // Focus = events with no guests
     var focusColor = CalendarApp.EventColor.GRAY;
@@ -22,7 +26,8 @@ function ColorCodeEvents() {
         ['🔥', CalendarApp.EventColor.ORANGE],
     ];
 
-    /* END */
+    /* ---------- MODIFY THE CODE ABOVE ---------- 
+    */
 
     var today = new Date();
     var nextweek = new Date();
