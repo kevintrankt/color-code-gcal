@@ -9,7 +9,7 @@ Automatically color-code your Google Calendar similar to [Clockwise's](https://w
 
   
 
-## Color Coding (descending priority)
+## Color-Coding Options (in descending priority)
 
 - Custom color-coding rules
 - Out-of-office events
