@@ -1,5 +1,5 @@
 # color-code-gcal
-Color-code your Google Calendar similar to [Clockwise's](https://www.getclockwise.com/) color-coding feature. This runs entirely on [Google Apps Scripts](https://script.google.com/) so you don't have to agree to any permissions that your company is not cool with. 
+Automatically color-code your Google Calendar similar to [Clockwise's](https://www.getclockwise.com/) color-coding feature. This runs entirely on [Google Apps Scripts](https://script.google.com/) so you don't have to agree to any permissions that your company is not cool with. 
 
 ![enter image description here](https://github.com/kevintrankt/color-code-gcal/blob/main/screenshot.png?raw=true)
 
