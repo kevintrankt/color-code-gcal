@@ -3,8 +3,6 @@ function ColorCodeEvents() {
     /* ---------- MODIFY THE CODE BELOW ---------- 
     */
 
-    // Internal domain to determine if a mtg is external
-    var internalDomain = 'salesforce';
 
 
     /* COLORS CAN BE FOUND HERE https://developers.google.com/apps-script/reference/calendar/event-color  */
@@ -19,6 +17,9 @@ function ColorCodeEvents() {
     var outOfOfficeColor = CalendarApp.EventColor.RED;
     // guestlist has someone without @salesforce.com
     var externalMtgColor = CalendarApp.EventColor.PALE_RED;
+    // one off meeting (>1 guest and not recurring)    
+    var oneOffMtgColor = CalendarApp.EventColor.MAUVE;
+
 
     // if event title contains anything below, set the following color
     var titleLookup = [
@@ -28,6 +29,9 @@ function ColorCodeEvents() {
 
     /* ---------- MODIFY THE CODE ABOVE ---------- 
     */
+
+    var userEmail = Session.getActiveUser().getEmail();
+    var internalDomain = userEmail.match(/@(\w+)/g)[0].replace('@', '');
 
     var today = new Date();
     var nextweek = new Date();
@@ -63,9 +67,14 @@ function ColorCodeEvents() {
             e.setColor(recurringMtgColor)
         }
 
-        // 1:1 meetings (internal)
-        if (numberOfGuests == 2) {
+        // 1:1 recurring meetings (internal)
+        if (numberOfGuests == 2 && recurringEvent) {
             e.setColor(oneOnOneColor)
+        }
+
+        // one off meetings
+        if (numberOfGuests > 0 && !recurringEvent) {
+            e.setColor(oneOffMtgColor)
         }
 
         // External meeting
