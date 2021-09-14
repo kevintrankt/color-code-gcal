@@ -48,7 +48,7 @@ function ColorCodeEvents() {
             var guestList = e.getGuestList();
             var internal = true;
             for (guest of guestList) {
-                if (!guest.getEmail().includes(internalDomain)) {
+                if (!guest.getEmail().toLowerCase().includes(internalDomain)) {
                     internal = false;
                 }
             }
