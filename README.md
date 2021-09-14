@@ -23,7 +23,7 @@ Automatically color-code your Google Calendar similar to [Clockwise's](https://w
 ## Installation
 
 1. Navigate to [Google Apps Scripts](https://script.google.com/home) and create a new project.
-2. Name the project in the top left, and paste the `Code.gs` content into the editor.
+2. Name the project in the top left, and paste the contents of `Code.gs` into the editor.
 3. Modify `Code.gs`
 	1. Modify the `internalDomain` variable to match the email domain for internal guests at your company. This is used to determine whether or not a meeting is internal or external.
 	2.  *(Optional)* Choose the colors for the non-custom color-coding by modifying the color variables.
