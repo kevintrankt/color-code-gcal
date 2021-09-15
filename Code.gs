@@ -4,25 +4,25 @@ function ColorCodeEvents() {
 
     /* COLORS CAN BE FOUND HERE https://developers.google.com/apps-script/reference/calendar/event-color  */
 
-    // Focus = events with no guests
-    var focusColor = CalendarApp.EventColor.GRAY;
-    // One on One = recurring meetings with 2 guests (including yourself)
-    var oneOnOneColor = CalendarApp.EventColor.YELLOW;
-    // Any recurring meeting
-    var recurringMtgColor = CalendarApp.EventColor.PALE_GREEN;
-    // Out of Office = event title contains OOO or out of office (not case sensitive)
-    var outOfOfficeColor = CalendarApp.EventColor.RED;
-    // guestlist has someone not matching your email domain
-    var externalMtgColor = CalendarApp.EventColor.PALE_RED;
-    // One Off meeting = >1 guest and not recurring   
-    var oneOffMtgColor = CalendarApp.EventColor.MAUVE;
+    // Focus/Holds        :     Events with no guests & no meeting URLs
+    var focusColor = 'GRAY';
+    // One on One         :     Recurring meetings with 2 guests (including yourself)
+    var oneOnOneColor = 'YELLOW';
+    // Recurring Meeting  :     Team syncs, stand ups, etc
+    var recurringMtgColor = 'PALE_GREEN';
+    // Out of Office      :     Event title contains "ooo" or "out of office" (not case sensitive)
+    var outOfOfficeColor = 'RED';
+    // External Meeting   :     Guestlist has someone not matching your email domain
+    var externalMtgColor = 'PALE_RED';
+    // One Off meeting    :    >1 guest and not recurring   
+    var oneOffMtgColor = 'MAUVE';
 
 
-    // Custom color-coding based on the event's title
+    // Custom color-coding: if your event contains text from index 0, the script will set the event color to the color in index 1.
     var titleLookup = [
-        ['👀', CalendarApp.EventColor.PALE_RED],
-        ['🔥', CalendarApp.EventColor.ORANGE],
-        ['all hands', CalendarApp.EventColor.PALE_BLUE]
+        ['👀', 'PALE_RED'],
+        ['🔥', 'ORANGE'],
+        ['all hands', 'PALE_BLUE']
     ];
 
     /* ---------- MODIFY THE CODE ABOVE ---------- */
@@ -61,42 +61,43 @@ function ColorCodeEvents() {
 
         // recurring meeting
         if (recurringEvent) {
-            e.setColor(recurringMtgColor)
+            e.setColor(CalendarApp.EventColor[recurringMtgColor])
         }
 
         // 1:1 recurring meetings (internal)
         if (numberOfGuests == 2 && recurringEvent) {
-            e.setColor(oneOnOneColor)
+            e.setColor(CalendarApp.EventColor[oneOnOneColor])
         }
 
         // one off meetings
         if (numberOfGuests > 0 && !recurringEvent) {
-            e.setColor(oneOffMtgColor)
+            e.setColor(CalendarApp.EventColor[oneOffMtgColor])
         }
 
         // External meeting
         if (!internal) {
-            e.setColor(externalMtgColor)
+            e.setColor(CalendarApp.EventColor[externalMtgColor])
         }
 
-        // focus time
+        // Focus/Holds
         if (numberOfGuests == 0) {
-            e.setColor(focusColor)
+            e.setColor(CalendarApp.EventColor[focusColor]);
         }
 
         // one off mtg w/ no guest (calendar invite or something)
         if (numberOfGuests == 0 && meetingContainsVideoMtg) {
-            e.setColor(oneOffMtgColor)
+            e.setColor(CalendarApp.EventColor[oneOffMtgColor])
         }
 
         //  OOO
         if (title.includes('ooo') || title.includes('out of office')) {
-            e.setColor(outOfOfficeColor);
+            e.setColor(CalendarApp.EventColor[outOfOfficeColor]);
         }
 
+        // Custom Color-coding
         for (inputTitle of titleLookup) {
             if (title.includes(inputTitle[0])) {
-                e.setColor(inputTitle[1]);
+                e.setColor(CalendarApp.EventColor[inputTitle[1]]);
             }
         }
 
