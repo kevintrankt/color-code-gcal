@@ -38,7 +38,7 @@ function ColorCodeEvents() {
     var calendars = CalendarApp.getAllOwnedCalendars();
     Logger.log("found number of calendars: " + calendars.length);
 
-    // this assumes your SF calendar is the first calendar. you may have to change the index below.
+    // this assumes your work calendar is the first calendar. you may have to change the index below.
     var calendar = calendars[0];
     var events = calendar.getEvents(today, nextweek);
     for (var j = 0; j < events.length; j++) {
