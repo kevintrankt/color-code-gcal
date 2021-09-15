@@ -1,8 +1,6 @@
 function ColorCodeEvents() {
 
-    /* ---------- MODIFY THE CODE BELOW ---------- 
-    */
-
+    /* ---------- MODIFY THE CODE BELOW ---------- */
 
 
     /* COLORS CAN BE FOUND HERE https://developers.google.com/apps-script/reference/calendar/event-color  */
@@ -25,10 +23,10 @@ function ColorCodeEvents() {
     var titleLookup = [
         ['👀', CalendarApp.EventColor.PALE_RED],
         ['🔥', CalendarApp.EventColor.ORANGE],
+        ['all hands', CalendarApp.EventColor.PALE_BLUE]
     ];
 
-    /* ---------- MODIFY THE CODE ABOVE ---------- 
-    */
+    /* ---------- MODIFY THE CODE ABOVE ---------- */
 
     var userEmail = Session.getActiveUser().getEmail();
     var internalDomain = userEmail.match(/@(\w+)/g)[0].replace('@', '');
@@ -47,6 +45,7 @@ function ColorCodeEvents() {
     for (var j = 0; j < events.length; j++) {
         var e = events[j];
         var title = e.getTitle().toLowerCase();
+        var description = e.getDescription().toLowerCase();
         var numberOfGuests = e.getGuestList(true).length;
         if (numberOfGuests > 0) {
             var guestList = e.getGuestList();
@@ -59,8 +58,7 @@ function ColorCodeEvents() {
         }
         var allDayEvent = e.isAllDayEvent();
         var recurringEvent = e.isRecurringEvent();
-
-
+        var meetingContainsVideoMtg = description.includes('zoom.') || description.includes('meet.google');
 
         // recurring meeting
         if (recurringEvent) {
@@ -87,8 +85,13 @@ function ColorCodeEvents() {
             e.setColor(focusColor)
         }
 
+        // one off mtg w/ no guest (calendar invite or something)
+        if (numberOfGuests == 0 && meetingContainsVideoMtg) {
+            e.setColor(oneOffMtgColor)
+        }
+
         //  OOO
-        if (title.includes('OOO') || title.includes('out of office')) {
+        if (title.includes('ooo') || title.includes('out of office')) {
             e.setColor(outOfOfficeColor);
         }
 
