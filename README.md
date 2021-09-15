@@ -24,7 +24,7 @@ Automatically color-code your work Google Calendar events similar to [Clockwise'
 ## Installation
 
 1. Navigate to [Google Apps Scripts](https://script.google.com/home) and create a new project.
-2. Name the project in the top left, and paste the contents of `Code.gs` into the editor.
+2. Name the project in the top left, and paste the contents of [`Code.gs`](https://github.com/kevintrankt/color-code-gcal/blob/main/Code.gs) into the editor.
 3. *(Optional)* Modify `Code.gs`
 	1.  *(Optional)* Modify the various variables to select which colors you want for the default events
 	2.  *(Optional)* Set up custom color-coding in the `titleLookup` variable. 
