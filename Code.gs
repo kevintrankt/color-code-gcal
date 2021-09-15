@@ -6,19 +6,19 @@ function ColorCodeEvents() {
 
     // Focus = events with no guests
     var focusColor = CalendarApp.EventColor.GRAY;
-    // One on One = meetings with 2 guests
+    // One on One = recurring meetings with 2 guests (including yourself)
     var oneOnOneColor = CalendarApp.EventColor.YELLOW;
-    // Any recurring event
+    // Any recurring meeting
     var recurringMtgColor = CalendarApp.EventColor.PALE_GREEN;
     // Out of Office = event title contains OOO or out of office (not case sensitive)
     var outOfOfficeColor = CalendarApp.EventColor.RED;
     // guestlist has someone not matching your email domain
     var externalMtgColor = CalendarApp.EventColor.PALE_RED;
-    // one off meeting (>1 guest and not recurring)    
+    // One Off meeting = >1 guest and not recurring   
     var oneOffMtgColor = CalendarApp.EventColor.MAUVE;
 
 
-    // if event title contains anything below, set the following color
+    // Custom color-coding based on the event's title
     var titleLookup = [
         ['👀', CalendarApp.EventColor.PALE_RED],
         ['🔥', CalendarApp.EventColor.ORANGE],
