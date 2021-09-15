@@ -25,9 +25,9 @@ Automatically color-code your work Google Calendar events similar to [Clockwise'
 
 1. Navigate to [Google Apps Scripts](https://script.google.com/home) and create a new project.
 2. Name the project in the top left, and paste the contents of `Code.gs` into the editor.
-3. Modify `Code.gs`
-	1.  *(Optional)* Choose the colors for the non-custom color-coding by modifying the color variables.
-	2.  *(Optional)* Set up custom color-coding in the `titleLookup` variable. `titleLookup` is an array of length 2 arrays where the first value is a substring within the event title and the second value is the custom color.
-	3. Save and run the code.
-4. On the left sidenav, select **Triggers** and create a new trigger.
-5.  `ColorCodeEvents` > `Head` > `From Calendar` > `Calendar updated` > *{your email}*. This will run the script to color-code your events every time you update your calendar.
+3. *(Optional)* Modify `Code.gs`
+	1.  *(Optional)* Modify the various variables to select which colors you want for the default events
+	2.  *(Optional)* Set up custom color-coding in the `titleLookup` variable. 
+4. Save and run the code.
+5. On the left sidenav, select **Triggers** and create a new trigger.
+6.  `ColorCodeEvents` > `Head` > `From Calendar` > `Calendar updated` > *{your email}*. This will run the script to color-code your events every time you update your calendar.
