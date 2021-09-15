@@ -12,7 +12,7 @@ function ColorCodeEvents() {
     var recurringMtgColor = CalendarApp.EventColor.PALE_GREEN;
     // Out of Office = event title contains OOO or out of office (not case sensitive)
     var outOfOfficeColor = CalendarApp.EventColor.RED;
-    // guestlist has someone without @salesforce.com
+    // guestlist has someone not matching your email domain
     var externalMtgColor = CalendarApp.EventColor.PALE_RED;
     // one off meeting (>1 guest and not recurring)    
     var oneOffMtgColor = CalendarApp.EventColor.MAUVE;
