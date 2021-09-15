@@ -1,4 +1,3 @@
-function ColorCodeEvents() {
 
     /* ---------- MODIFY THE CODE BELOW ---------- */
 
@@ -103,4 +102,4 @@ function ColorCodeEvents() {
 
 
     }
-}
+
