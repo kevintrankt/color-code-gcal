@@ -30,4 +30,4 @@ Automatically color-code your work Google Calendar events similar to [Clockwise'
 	2.  *(Optional)* Set up custom color-coding in the `titleLookup` variable. `titleLookup` is an array of length 2 arrays where the first value is a substring within the event title and the second value is the custom color.
 	3. Save and run the code.
 4. On the left sidenav, select **Triggers** and create a new trigger.
-5.  `ColorCodeEvents` > `Head` > `From Calendar` > `Calendar updated` > *{your email}*. This will run the script to color-code your email everytime you update your calendar. (I don't know if this works if someone sends you an invite yet.
+5.  `ColorCodeEvents` > `Head` > `From Calendar` > `Calendar updated` > *{your email}*. This will run the script to color-code your email every time you update your calendar.
