@@ -5,7 +5,7 @@ Automatically color-code your work Google Calendar events similar to [Clockwise'
 
   
 
-![enter image description here](https://github.com/kevintrankt/color-code-gcal/blob/main/screenshot.png?raw=true)
+![enter image description here](https://github.com/kevintrankt/color-code-gcal/blob/main/Photos/screenshot.png?raw=true)
 
   
 
