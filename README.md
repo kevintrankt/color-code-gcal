@@ -34,4 +34,4 @@ Since this script uses the Calendar API, you must grant Calendar permissions to 
 ### Error: Google hasn't verified this app
 I didn't get this error on my work email, but I ran into it when testing things on my personal email. More info about verification can be found [here](https://developers.google.com/apps-script/guides/client-verification#requesting_verification). 
 
-If you get this error, you can click **Advanced** followed by **Go to X Project (unsafe)** to bypass verification. As mentioned above, the script simply changes the color of your events and ever sends data to any other tool. 
+If you get this error, you can click **Advanced** followed by **Go to X Project (unsafe)** to bypass verification. As mentioned above, the script simply changes the color of your events and never sends data to any other tool. 
