@@ -50,6 +50,6 @@ This automatically fetches the code from [`Code.gs`](https://github.com/kevintra
 ## Known Issues
 - If your calendar invite has a room, I guess that counts as a guest... I'll need to figure this out
 - This grabs your email domain from your email address; if your company changed domains, this can screw up the external meetings coloring
-- The script doesn't check for video links in the description
+- The script doesn't check for video links in the location
 
 
