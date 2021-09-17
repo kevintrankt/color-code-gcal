@@ -58,11 +58,16 @@ function ColorCodeEvents() {
         var title = e.getTitle().toLowerCase();
         var description = e.getDescription().toLowerCase();
         var numberOfGuests = e.getGuestList(true).length;
+
+
         if (numberOfGuests > 0) {
             var guestList = e.getGuestList();
+
             var internal = true;
             for (guest of guestList) {
-                if (!guest.getEmail().toLowerCase().includes(internalDomain)) {
+
+                // Checks if external domain AND if there is a room invited
+                if (!guest.getEmail().toLowerCase().includes(internalDomain) && !guest.getEmail().toLowerCase().includes('resource.calendar.google.com')) {
                     internal = false;
                 }
             }
