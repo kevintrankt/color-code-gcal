@@ -42,5 +42,6 @@ If you get this error, you can click **Advanced** followed by **Go to X Project 
 ## Known Issues
 - If your calendar invite has a room, I guess that counts as a guest... I'll need to figure this out
 - This grabs your email domain from your email address; if your company changed domains, this can screw up the external meetings coloring
+- The script doesn't check for video links in the description
 
 

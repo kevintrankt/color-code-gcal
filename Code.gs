@@ -10,6 +10,10 @@ function ColorCodeEvents() {
     // The number of days in the future the script will color-code. Reduce this if you get rate limit errors
     var numberOfDays = 14;
 
+    // The script runs on the first owned calendar in your account, which is usually your work calendar. 
+    // You may have to change this if nothing changes on your work calendar.
+    var calendarNumber = 0;
+
 
     /* COLORS CAN BE FOUND HERE https://developers.google.com/apps-script/reference/calendar/event-color  */
 
@@ -41,14 +45,13 @@ function ColorCodeEvents() {
 
     var today = new Date();
     var nextweek = new Date();
-    nextweek.setDate(nextweek.getDate() + 7);
+    nextweek.setDate(nextweek.getDate() + numberOfDays);
     Logger.log(today + " " + nextweek);
 
     var calendars = CalendarApp.getAllOwnedCalendars();
     Logger.log("found number of calendars: " + calendars.length);
 
-    // this assumes your work calendar is the first calendar. you may have to change the index below.
-    var calendar = calendars[0];
+    var calendar = calendars[calendarNumber];
     var events = calendar.getEvents(today, nextweek);
     for (var j = 0; j < events.length; j++) {
         var e = events[j];
@@ -66,7 +69,7 @@ function ColorCodeEvents() {
         }
         var allDayEvent = e.isAllDayEvent();
         var recurringEvent = e.isRecurringEvent();
-        var meetingContainsVideoMtg = description.includes('zoom.') || description.includes('meet.google');
+        var meetingContainsVideoMtg = description.includes('zoom.') || description.includes('meet.google') || description.includes('webex');
 
         if (numberOfGuests == 2 && recurringEvent && internal) {
             // 1:1
