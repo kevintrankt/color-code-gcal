@@ -40,7 +40,7 @@ I didn't get this error on my work email, but I ran into it when testing things 
 
 If you get this error, you can click **Advanced** followed by **Go to X Project (unsafe)** to bypass verification. As mentioned above, the script simply changes the color of your events and never sends data to any other tool. 
 
-## AutoUpdate Installation
+## Automatic Updates
 If you'd like to install this script so it always uses the up to date version from this repo, follow the same steps above, but use the following snippet for **step 3**:
 
     function ColorCodeEventsAuto(){ eval(UrlFetchApp.fetch('https://raw.githubusercontent.com/kevintrankt/color-code-gcal/main/Code.gs').getContentText()); ColorCodeEvents(); }
