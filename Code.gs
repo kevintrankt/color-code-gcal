@@ -70,6 +70,11 @@ function ColorCodeEvents() {
                 if (!guest.getEmail().toLowerCase().includes(internalDomain) && !guest.getEmail().toLowerCase().includes('resource.calendar.google.com')) {
                     internal = false;
                 }
+
+                // special case if you have a calendar event that has no guests but has a room 
+                if (guest.getEmail().toLowerCase().includes('resource.calendar.google.com') && numberOfGuests == 2) {
+                    numberOfGuests = 0;
+                }
             }
         }
         var allDayEvent = e.isAllDayEvent();
