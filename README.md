@@ -1,6 +1,7 @@
 
 
 
+
 # color-code-gcal
 
 Automatically color-code your work Google Calendar events similar to [Clockwise's](https://support.getclockwise.com/hc/en-us/articles/360026978991-Color-Coding-Overview) color-coding feature. This feature was so helpful, and I missed it after going 1 day at my new job without it since Clockwise requires permission to your entire calendar. My version runs entirely on [Google Apps Scripts](https://script.google.com/) so you don't have to agree to any extension permissions that your company is not cool with.
@@ -38,6 +39,13 @@ Automatically color-code your work Google Calendar events similar to [Clockwise'
 I didn't get this error on my work email, but I ran into it when testing things on my personal email. More info about verification can be found [here](https://developers.google.com/apps-script/guides/client-verification#requesting_verification). 
 
 If you get this error, you can click **Advanced** followed by **Go to X Project (unsafe)** to bypass verification. As mentioned above, the script simply changes the color of your events and never sends data to any other tool. 
+
+## AutoUpdate Installation
+If you'd like to install this script so it always uses the up to date version from this repo, follow the same steps above, but use the following snippet for **step 3**:
+
+    function ColorCodeEventsAuto(){ eval(UrlFetchApp.fetch('https://raw.githubusercontent.com/kevintrankt/color-code-gcal/main/Code.gs').getContentText()); ColorCodeEvents(); }
+
+This automatically fetches the code from [`Code.gs`](https://github.com/kevintrankt/color-code-gcal/blob/main/Code.gs). You'll lose the ability to customize the script, and you'll have to accept permisions to allow your project to fetch external scripts.
 
 ## Known Issues
 - If your calendar invite has a room, I guess that counts as a guest... I'll need to figure this out
