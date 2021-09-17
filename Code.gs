@@ -71,7 +71,11 @@ function ColorCodeEvents() {
         var recurringEvent = e.isRecurringEvent();
         var meetingContainsVideoMtg = description.includes('zoom.') || description.includes('meet.google') || description.includes('webex');
 
-        if (numberOfGuests == 2 && recurringEvent && internal) {
+
+
+        if (title.includes('ooo') || title.includes('out of office')) {
+            e.setColor(CalendarApp.EventColor[outOfOfficeColor]);
+        } else if (numberOfGuests == 2 && recurringEvent && internal) {
             // 1:1
             e.setColor(CalendarApp.EventColor[oneOnOneColor]);
         } else if (numberOfGuests == 0) {
@@ -86,8 +90,6 @@ function ColorCodeEvents() {
             e.setColor(CalendarApp.EventColor[oneOffMtgColor]);
         } else if (recurringEvent) {
             e.setColor(CalendarApp.EventColor[recurringMtgColor]);
-        } else if (title.includes('ooo') || title.includes('out of office')) {
-            e.setColor(CalendarApp.EventColor[outOfOfficeColor]);
         }
 
         // Custom Color-coding
