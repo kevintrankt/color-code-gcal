@@ -1,5 +1,14 @@
+
+// function ColorCodeEvents(){
+//   eval(UrlFetchApp.fetch('https://raw.githubusercontent.com/kevintrankt/color-code-gcal/main/Code.gs').getContentText());
+// }
+
+
 function ColorCodeEvents() {
     /* ---------- MODIFY THE CODE BELOW ---------- */
+
+    // The number of days in the future the script will color-code. Reduce this if you get rate limit errors
+    var numberOfDays = 14;
 
 
     /* COLORS CAN BE FOUND HERE https://developers.google.com/apps-script/reference/calendar/event-color  */
@@ -32,7 +41,7 @@ function ColorCodeEvents() {
 
     var today = new Date();
     var nextweek = new Date();
-    nextweek.setDate(nextweek.getDate() + 14);
+    nextweek.setDate(nextweek.getDate() + 7);
     Logger.log(today + " " + nextweek);
 
     var calendars = CalendarApp.getAllOwnedCalendars();
@@ -59,38 +68,22 @@ function ColorCodeEvents() {
         var recurringEvent = e.isRecurringEvent();
         var meetingContainsVideoMtg = description.includes('zoom.') || description.includes('meet.google');
 
-        // recurring meeting
-        if (recurringEvent) {
-            e.setColor(CalendarApp.EventColor[recurringMtgColor])
-        }
-
-        // 1:1 recurring meetings (internal)
-        if (numberOfGuests == 2 && recurringEvent) {
-            e.setColor(CalendarApp.EventColor[oneOnOneColor])
-        }
-
-        // one off meetings
-        if (numberOfGuests > 0 && !recurringEvent) {
-            e.setColor(CalendarApp.EventColor[oneOffMtgColor])
-        }
-
-        // External meeting
-        if (!internal) {
-            e.setColor(CalendarApp.EventColor[externalMtgColor])
-        }
-
-        // Focus/Holds
-        if (numberOfGuests == 0) {
+        if (numberOfGuests == 2 && recurringEvent && internal) {
+            // 1:1
+            e.setColor(CalendarApp.EventColor[oneOnOneColor]);
+        } else if (numberOfGuests == 0) {
+            // Focus/holds
             e.setColor(CalendarApp.EventColor[focusColor]);
-        }
-
-        // one off mtg w/ no guest (calendar invite or something)
-        if (numberOfGuests == 0 && meetingContainsVideoMtg) {
-            e.setColor(CalendarApp.EventColor[oneOffMtgColor])
-        }
-
-        //  OOO
-        if (title.includes('ooo') || title.includes('out of office')) {
+        } else if (!internal) {
+            // External
+            e.setColor(CalendarApp.EventColor[externalMtgColor]);
+        } else if (numberOfGuests == 0 && meetingContainsVideoMtg) {
+            e.setColor(CalendarApp.EventColor[oneOffMtgColor]);
+        } else if (numberOfGuests > 0 && !recurringEvent) {
+            e.setColor(CalendarApp.EventColor[oneOffMtgColor]);
+        } else if (recurringEvent) {
+            e.setColor(CalendarApp.EventColor[recurringMtgColor]);
+        } else if (title.includes('ooo') || title.includes('out of office')) {
             e.setColor(CalendarApp.EventColor[outOfOfficeColor]);
         }
 

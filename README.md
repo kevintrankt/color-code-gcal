@@ -8,7 +8,7 @@ Automatically color-code your work Google Calendar events similar to [Clockwise'
  
   <img src="https://github.com/kevintrankt/color-code-gcal/blob/main/Photos/screenshot.png?raw=true" alt="screenshot" width="600"/>
 
-## Color-Coding Options (in descending priority)
+## Color-Coding Options
 
 - Custom color-coding rules
 - Out-of-office events
@@ -38,3 +38,9 @@ Automatically color-code your work Google Calendar events similar to [Clockwise'
 I didn't get this error on my work email, but I ran into it when testing things on my personal email. More info about verification can be found [here](https://developers.google.com/apps-script/guides/client-verification#requesting_verification). 
 
 If you get this error, you can click **Advanced** followed by **Go to X Project (unsafe)** to bypass verification. As mentioned above, the script simply changes the color of your events and never sends data to any other tool. 
+
+## Known Issues
+- If your calendar invite has a room, I guess that counts as a guest... I'll need to figure this out
+- This grabs your email domain from your email address; if your company changed domains, this can screw up the external meetings coloring
+
+
