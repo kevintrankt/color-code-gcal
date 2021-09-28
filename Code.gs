@@ -88,7 +88,7 @@ function ColorCodeEvents() {
         } else if (numberOfGuests == 2 && recurringEvent && internal) {
             // 1:1
             e.setColor(CalendarApp.EventColor[oneOnOneColor]);
-        } else if (numberOfGuests == 0) {
+        } else if (numberOfGuests == 0 && !meetingContainsVideoMtg) {
             // Focus/holds
             e.setColor(CalendarApp.EventColor[focusColor]);
         } else if (!internal) {
