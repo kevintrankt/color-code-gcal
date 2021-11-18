@@ -72,18 +72,12 @@ function ColorCodeEvents() {
                     internal = false;
                 }
 
-                if (title.includes('trisha')) {
-                    console.log(guest.getEmail());
-                }
-
-                // special case if 1:1 has a reserved room 
-                if (guest.getEmail().toLowerCase().includes('resource.calendar.google.com') && numberOfGuests == 3) {
-                    numberOfGuests = numberOfGuests - 1;
-                }
-
                 // special case if you have a calendar event that has no guests but has a room 
+                // special case if 1:1 has a reserved room 
                 if (guest.getEmail().toLowerCase().includes('resource.calendar.google.com') && numberOfGuests == 2) {
                     numberOfGuests = 0;
+                } else if (guest.getEmail().toLowerCase().includes('resource.calendar.google.com') && numberOfGuests == 3) {
+                    numberOfGuests = 2;
                 }
             }
         }
