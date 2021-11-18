@@ -35,7 +35,8 @@ function ColorCodeEvents() {
     var titleLookup = [
         ['👀', 'PALE_RED'],
         ['🔥', 'ORANGE'],
-        ['all hands', 'PALE_BLUE']
+        ['all hands', 'PALE_BLUE'],
+        ['reminder', 'ORANGE']
     ];
 
     /* ---------- MODIFY THE CODE ABOVE ---------- */
@@ -71,6 +72,15 @@ function ColorCodeEvents() {
                     internal = false;
                 }
 
+                if (title.includes('trisha')) {
+                    console.log(guest.getEmail());
+                }
+
+                // special case if 1:1 has a reserved room 
+                if (guest.getEmail().toLowerCase().includes('resource.calendar.google.com') && numberOfGuests == 3) {
+                    numberOfGuests = numberOfGuests - 1;
+                }
+
                 // special case if you have a calendar event that has no guests but has a room 
                 if (guest.getEmail().toLowerCase().includes('resource.calendar.google.com') && numberOfGuests == 2) {
                     numberOfGuests = 0;
@@ -80,6 +90,8 @@ function ColorCodeEvents() {
         var allDayEvent = e.isAllDayEvent();
         var recurringEvent = e.isRecurringEvent();
         var meetingContainsVideoMtg = description.includes('zoom.') || description.includes('meet.google') || description.includes('webex');
+
+
 
 
 
